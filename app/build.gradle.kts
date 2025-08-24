@@ -8,6 +8,7 @@ plugins {
 
 android {
     namespace = "com.nicos.room_database_relationships"
+    buildToolsVersion = "36.0.0"
     compileSdk = 36
 
     defaultConfig {
