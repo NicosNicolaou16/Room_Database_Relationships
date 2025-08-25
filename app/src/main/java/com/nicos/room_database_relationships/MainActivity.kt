@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.nicos.room_database_relationships.ui.theme.Room_Database_RelationshipsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,8 +22,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val viewModel: MainViewModel by viewModels()
-        viewModel
         setContent {
             Room_Database_RelationshipsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -37,7 +36,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(name: String, modifier: Modifier = Modifier, mainViewModel: MainViewModel = hiltViewModel()) {
     Text(
         text = "Hello $name!",
         modifier = modifier
