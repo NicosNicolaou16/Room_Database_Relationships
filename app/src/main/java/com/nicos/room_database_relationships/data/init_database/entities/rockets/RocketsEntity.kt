@@ -152,7 +152,7 @@ data class RocketsEntity(
             return rocket
         }
 
-        suspend fun getAllRockets(myRoomDatabase: MyRoomDatabase): MutableList<RocketWIthRelationships>? {
+        suspend fun getAllRockets(myRoomDatabase: MyRoomDatabase): MutableList<RocketWIthRelationships> {
             val rockets: MutableList<RocketWIthRelationships> =
                 myRoomDatabase.rocketsDao().getAllRocketsWithRelationShips()
             return rockets

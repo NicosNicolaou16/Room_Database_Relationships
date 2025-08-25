@@ -1,6 +1,6 @@
 package com.nicos.room_database_relationships.domain.di
 
-import com.nicos.room_database_relationships.domain.network.RocketsService
+import com.nicos.pokedex_compose.domain.network.init_network.MyNetworkManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -8,11 +8,12 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
 @Module
-internal object ApisServiceModule {
+@InstallIn(SingletonComponent::class)
+object NetworkModules {
+
 
     @Provides
     @Singleton
-    fun getRocketsService(retrofit: Retrofit): RocketsService = retrofit.create(RocketsService::class.java)
+    fun requestBuilder(): Retrofit = MyNetworkManager.initNetworkManager()
 }
