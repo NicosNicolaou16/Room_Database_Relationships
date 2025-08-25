@@ -1,11 +1,10 @@
-package com.nick.nickjetpackprojectandextras.room_database.rockets
+package com.nicos.room_database_relationships.data.entities.rockets
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.nick.nickjetpackprojectandextras.room_database.init_database.MyRoomDatabase
-import kotlinx.coroutines.flow.flow
+import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 
 @Entity(
     indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"], unique = true)],
@@ -29,11 +28,10 @@ data class ThrustVacuumEntity(
         suspend fun insertThrustSeaLevel(
             thrustVacuumEntity: ThrustVacuumEntity?,
             myRoomDatabase: MyRoomDatabase
-        ) = flow {
-            if(thrustVacuumEntity == null) return@flow
+        )  {
+            if(thrustVacuumEntity == null) return
             thrustVacuumEntity.rocketId = thrustVacuumEntity.rocketId
             myRoomDatabase.thrustVacuumDao().insertObject(thrustVacuumEntity)
-            emit(thrustVacuumEntity)
         }
     }
 }

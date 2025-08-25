@@ -5,14 +5,62 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterDiameter
+import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterFirstStage
+import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterHeight
+import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterMass
+import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterPayloadWeight
+import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterThrustSeaLevel
+import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterThrustVacuum
+import com.nicos.room_database_relationships.data.entities.rockets.DiameterEntity
+import com.nicos.room_database_relationships.data.entities.rockets.FirstStageEntity
+import com.nicos.room_database_relationships.data.entities.rockets.HeightEntity
+import com.nicos.room_database_relationships.data.entities.rockets.MassEntity
+import com.nicos.room_database_relationships.data.entities.rockets.PayloadWeightsEntity
+import com.nicos.room_database_relationships.data.entities.rockets.RocketsEntity
+import com.nicos.room_database_relationships.data.entities.rockets.ThrustSeaLevelEntity
+import com.nicos.room_database_relationships.data.entities.rockets.ThrustVacuumEntity
+import com.nicos.room_database_relationships.data.entities.rockets.dao.DiameterDao
+import com.nicos.room_database_relationships.data.entities.rockets.dao.FirstStageDao
+import com.nicos.room_database_relationships.data.entities.rockets.dao.HeightDao
+import com.nicos.room_database_relationships.data.entities.rockets.dao.MassDao
+import com.nicos.room_database_relationships.data.entities.rockets.dao.PayloadWeightDao
+import com.nicos.room_database_relationships.data.entities.rockets.dao.RocketsDao
+import com.nicos.room_database_relationships.data.entities.rockets.dao.ThrustSeaLevelDao
+import com.nicos.room_database_relationships.data.entities.rockets.dao.ThrustVacuumDao
 
 @Database(
-    entities = [],
+    entities = [
+        RocketsEntity::class,
+        DiameterEntity::class,
+        HeightEntity::class,
+        MassEntity::class,
+        FirstStageEntity::class,
+        PayloadWeightsEntity::class,
+        ThrustVacuumEntity::class,
+        ThrustSeaLevelEntity::class
+    ],
     version = 1,
     exportSchema = false
 )
-@TypeConverters()
+@TypeConverters(
+    ConverterDiameter::class,
+    ConverterHeight::class,
+    ConverterMass::class,
+    ConverterFirstStage::class,
+    ConverterPayloadWeight::class,
+    ConverterThrustSeaLevel::class,
+    ConverterThrustVacuum::class
+)
 abstract class MyRoomDatabase : RoomDatabase() {
+    abstract fun diameterDao(): DiameterDao
+    abstract fun heightDao(): HeightDao
+    abstract fun massDao(): MassDao
+    abstract fun firstStageDao(): FirstStageDao
+    abstract fun payloadWeightDao(): PayloadWeightDao
+    abstract fun thrustVacuumDao(): ThrustVacuumDao
+    abstract fun thrustSeaLevelDao(): ThrustSeaLevelDao
+    abstract fun rocketsDao(): RocketsDao
 
     companion object {
         private const val DB_NAME = "DB_NAME"

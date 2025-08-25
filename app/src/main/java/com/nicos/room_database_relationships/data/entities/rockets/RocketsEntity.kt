@@ -1,4 +1,4 @@
-package com.nick.nickjetpackprojectandextras.room_database.rockets
+package com.nicos.room_database_relationships.data.entities.rockets
 
 import android.util.Log
 import androidx.room.Entity
@@ -6,7 +6,6 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
-import com.nick.nickjetpackprojectandextras.room_database.init_database.MyRoomDatabase
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterDiameter
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterFirstStage
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterHeight
@@ -14,6 +13,7 @@ import com.nick.nickjetpackprojectandextras.room_database.type_converter.Convert
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterPayloadWeight
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterRoles
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConvertersDate
+import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 import kotlinx.coroutines.flow.flow
 import java.util.Date
 

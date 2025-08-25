@@ -1,4 +1,4 @@
-package com.nick.nickjetpackprojectandextras.room_database.rockets
+package com.nicos.room_database_relationships.data.entities.rockets
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -6,9 +6,9 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
-import com.nick.nickjetpackprojectandextras.room_database.init_database.MyRoomDatabase
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterThrustSeaLevel
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterThrustVacuum
+import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 
 @Entity(
     indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"], unique = true)],
@@ -62,7 +62,7 @@ data class FirstStageEntity(
             firstStageEntity: FirstStageEntity?,
             myRoomDatabase: MyRoomDatabase
         ) {
-            ThrustSeaLevelEntity.insertThrustSeaLevel(
+            ThrustSeaLevelEntity.Companion.insertThrustSeaLevel(
                 thrustSeaLevelEntity = firstStageEntity?.thrustSeaLevel,
                 myRoomDatabase = myRoomDatabase
             )
@@ -72,7 +72,7 @@ data class FirstStageEntity(
             firstStageEntity: FirstStageEntity,
             myRoomDatabase: MyRoomDatabase
         ) {
-            ThrustVacuumEntity.insertThrustSeaLevel(
+            ThrustVacuumEntity.Companion.insertThrustSeaLevel(
                 thrustVacuumEntity = firstStageEntity.thrustVacuum,
                 myRoomDatabase = myRoomDatabase
             )

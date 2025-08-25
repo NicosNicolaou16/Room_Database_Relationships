@@ -3,8 +3,8 @@ package com.nicos.room_database_relationships.data.entities.rockets.dao
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
-import com.nick.nickjetpackprojectandextras.room_database.rockets.RocketWIthRelationships
-import com.nick.nickjetpackprojectandextras.room_database.rockets.RocketsEntity
+import com.nicos.room_database_relationships.data.entities.rockets.RocketWIthRelationships
+import com.nicos.room_database_relationships.data.entities.rockets.RocketsEntity
 import com.nicos.room_database_relationships.data.init_database.BaseDao
 
 @Dao
