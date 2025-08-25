@@ -5,5 +5,4 @@ data class Rockets(
     val rocketName: String?,
     val rocketType: String?,
     val rocketImage: String?
-    //relationships
 )

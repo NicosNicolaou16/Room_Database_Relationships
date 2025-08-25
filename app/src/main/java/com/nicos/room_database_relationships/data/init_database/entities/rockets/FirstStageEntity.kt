@@ -6,8 +6,8 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
-import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterThrustSeaLevel
-import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterThrustVacuum
+import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustSeaLevel
+import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustVacuum
 import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 
 @Entity(

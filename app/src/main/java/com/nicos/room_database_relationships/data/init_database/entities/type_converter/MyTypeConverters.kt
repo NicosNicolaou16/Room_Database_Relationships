@@ -1,16 +1,19 @@
-package com.nick.nickjetpackprojectandextras.room_database.type_converter
+package com.nicos.room_database_relationships.data.init_database.entities.type_converter
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.nick.nickjetpackprojectandextras.room_database.rockets.*
-import com.nicos.room_database_relationships.data.entities.rockets.DiameterEntity
-import com.nicos.room_database_relationships.data.entities.rockets.FirstStageEntity
-import com.nicos.room_database_relationships.data.entities.rockets.ThrustSeaLevelEntity
-import com.nicos.room_database_relationships.data.entities.rockets.ThrustVacuumEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.DiameterEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.FirstStageEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.HeightEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.MassEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustSeaLevelEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustVacuumEntity
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 class ConverterHeight {
 

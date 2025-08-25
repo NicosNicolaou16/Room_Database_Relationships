@@ -3,8 +3,8 @@ package com.nicos.room_database_relationships.data.init_database.entities.rocket
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
-import com.nick.nickjetpackprojectandextras.room_database.rockets.DiameterEntity
 import com.nicos.room_database_relationships.data.init_database.BaseDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.DiameterEntity
 
 @Dao
 interface DiameterDao : BaseDao<DiameterEntity, MutableList<DiameterEntity>> {

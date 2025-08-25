@@ -3,8 +3,8 @@ package com.nicos.room_database_relationships.data.init_database.entities.rocket
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
-import com.nicos.room_database_relationships.data.entities.rockets.HeightEntity
 import com.nicos.room_database_relationships.data.init_database.BaseDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.HeightEntity
 
 @Dao
 interface HeightDao : BaseDao<HeightEntity, MutableList<HeightEntity>> {

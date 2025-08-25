@@ -3,8 +3,8 @@ package com.nicos.room_database_relationships.data.init_database.entities.rocket
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
-import com.nicos.room_database_relationships.data.entities.rockets.MassEntity
 import com.nicos.room_database_relationships.data.init_database.BaseDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.MassEntity
 
 @Dao
 interface MassDao : BaseDao<MassEntity, MutableList<MassEntity>> {
