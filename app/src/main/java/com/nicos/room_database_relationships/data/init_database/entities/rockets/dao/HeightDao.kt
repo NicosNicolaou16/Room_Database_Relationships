@@ -1,4 +1,4 @@
-package com.nicos.room_database_relationships.data.entities.rockets.dao
+package com.nicos.room_database_relationships.data.init_database.entities.rockets.dao
 
 import androidx.room.Dao
 import androidx.room.Query

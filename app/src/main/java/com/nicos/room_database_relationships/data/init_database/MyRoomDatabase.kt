@@ -12,22 +12,22 @@ import com.nick.nickjetpackprojectandextras.room_database.type_converter.Convert
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterPayloadWeight
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterThrustSeaLevel
 import com.nick.nickjetpackprojectandextras.room_database.type_converter.ConverterThrustVacuum
-import com.nicos.room_database_relationships.data.entities.rockets.DiameterEntity
-import com.nicos.room_database_relationships.data.entities.rockets.FirstStageEntity
-import com.nicos.room_database_relationships.data.entities.rockets.HeightEntity
-import com.nicos.room_database_relationships.data.entities.rockets.MassEntity
-import com.nicos.room_database_relationships.data.entities.rockets.PayloadWeightsEntity
-import com.nicos.room_database_relationships.data.entities.rockets.RocketsEntity
-import com.nicos.room_database_relationships.data.entities.rockets.ThrustSeaLevelEntity
-import com.nicos.room_database_relationships.data.entities.rockets.ThrustVacuumEntity
-import com.nicos.room_database_relationships.data.entities.rockets.dao.DiameterDao
-import com.nicos.room_database_relationships.data.entities.rockets.dao.FirstStageDao
-import com.nicos.room_database_relationships.data.entities.rockets.dao.HeightDao
-import com.nicos.room_database_relationships.data.entities.rockets.dao.MassDao
-import com.nicos.room_database_relationships.data.entities.rockets.dao.PayloadWeightDao
-import com.nicos.room_database_relationships.data.entities.rockets.dao.RocketsDao
-import com.nicos.room_database_relationships.data.entities.rockets.dao.ThrustSeaLevelDao
-import com.nicos.room_database_relationships.data.entities.rockets.dao.ThrustVacuumDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.DiameterEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.FirstStageEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.HeightEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.MassEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketsEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustSeaLevelEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustVacuumEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.DiameterDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.FirstStageDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.HeightDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.MassDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.PayloadWeightDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.RocketsDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.ThrustSeaLevelDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.ThrustVacuumDao
 
 @Database(
     entities = [

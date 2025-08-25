@@ -1,40 +1,38 @@
-package com.nicos.room_database_relationships.data.entities.rockets
+package com.nicos.room_database_relationships.data.init_database.entities.rockets
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.nicos.room_database_relationships.data.entities.rockets.RocketsEntity
 import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 
 @Entity(
     indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"], unique = true)],
     foreignKeys = [
         ForeignKey(
-            entity = RocketsEntity::class,
-            parentColumns = arrayOf("id"),
+            entity = FirstStageEntity::class,
+            parentColumns = arrayOf("rocketId"),
             childColumns = arrayOf("rocketId"),
             onDelete = ForeignKey.CASCADE
         )
     ]
 )
-data class MassEntity(
+data class ThrustSeaLevelEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
-    val kg: Long?,
-    val lb: Long?,
+    var id: Long,
+    var kN: Long?,
+    var lbf: Long?,
     var rocketId: Int?
 ) {
 
     companion object {
-        suspend fun insertMass(
-            massEntity: MassEntity?,
-            rocketId: Int?,
+        suspend fun insertThrustSeaLevel(
+            thrustSeaLevelEntity: ThrustSeaLevelEntity?,
             myRoomDatabase: MyRoomDatabase
         ) {
-            if (massEntity == null) return
-            massEntity.rocketId = rocketId
-            myRoomDatabase.massDao().insertObject(massEntity)
+            if(thrustSeaLevelEntity == null) return
+            thrustSeaLevelEntity.rocketId = thrustSeaLevelEntity.rocketId
+            myRoomDatabase.thrustSeaLevelDao().insertObject(thrustSeaLevelEntity)
         }
     }
 }

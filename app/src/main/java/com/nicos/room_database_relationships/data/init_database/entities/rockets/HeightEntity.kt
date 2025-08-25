@@ -1,4 +1,4 @@
-package com.nicos.room_database_relationships.data.entities.rockets
+package com.nicos.room_database_relationships.data.init_database.entities.rockets
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 
 @Entity(
-    indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"], unique = true)],
+    indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"])],
     foreignKeys = [
         ForeignKey(
             entity = RocketsEntity::class,
@@ -17,23 +17,23 @@ import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
         )
     ]
 )
-data class DiameterEntity(
+data class HeightEntity(
     @PrimaryKey(autoGenerate = true)
-    var id: Long,
+    var id: Long = 0,
     var meters: Double?,
     var feet: Double?,
     var rocketId: Int?
 ) {
 
     companion object {
-        suspend fun insertDiameter(
-            diameterEntity: DiameterEntity?,
+        suspend fun insertHeight(
+            heightEntity: HeightEntity?,
             rocketId: Int?,
             myRoomDatabase: MyRoomDatabase
         ) {
-            if (diameterEntity == null) return
-            diameterEntity.rocketId = rocketId
-            myRoomDatabase.diameterDao().insertObject(diameterEntity)
+            if (heightEntity == null) return
+            heightEntity.rocketId = rocketId
+            myRoomDatabase.heightDao().insertObject(heightEntity)
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.nicos.room_database_relationships.data.entities.rockets
+package com.nicos.room_database_relationships.data.init_database.entities.rockets
 
 import android.util.Log
 import androidx.room.Entity
