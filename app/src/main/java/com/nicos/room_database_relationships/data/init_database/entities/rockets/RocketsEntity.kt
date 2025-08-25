@@ -2,6 +2,7 @@ package com.nicos.room_database_relationships.data.init_database.entities.rocket
 
 import android.util.Log
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters

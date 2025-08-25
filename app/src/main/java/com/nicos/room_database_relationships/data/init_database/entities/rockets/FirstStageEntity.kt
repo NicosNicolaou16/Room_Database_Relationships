@@ -64,6 +64,7 @@ data class FirstStageEntity(
         ) {
             ThrustSeaLevelEntity.Companion.insertThrustSeaLevel(
                 thrustSeaLevelEntity = firstStageEntity?.thrustSeaLevel,
+                rocketId = firstStageEntity?.rocketId,
                 myRoomDatabase = myRoomDatabase
             )
         }
@@ -74,6 +75,7 @@ data class FirstStageEntity(
         ) {
             ThrustVacuumEntity.Companion.insertThrustSeaLevel(
                 thrustVacuumEntity = firstStageEntity.thrustVacuum,
+                rocketId = firstStageEntity.rocketId,
                 myRoomDatabase = myRoomDatabase
             )
         }

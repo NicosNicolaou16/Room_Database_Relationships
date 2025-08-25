@@ -17,10 +17,12 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            rocketsRepositoryImpl.getRockets().collect {
+            rocketsRepositoryImpl.getRockets().collect { rocketWIthRelationships ->
                 withContext(Dispatchers.Main) {
-                    it.forEach {
+                    rocketWIthRelationships.forEach {
                         Log.d("rockets", it.rocketEntity.rocketName.toString())
+                        Log.d("rockets", it.firstStageEntity.thrustSeaLevel.toString())
+                        Log.d("rockets", it.firstStageAndThrustSeaLevel.thrustSeaLevelEntity.toString())
                     }
                 }
             }

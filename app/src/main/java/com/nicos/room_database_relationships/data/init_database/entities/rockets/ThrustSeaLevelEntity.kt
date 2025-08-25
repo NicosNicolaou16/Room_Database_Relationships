@@ -28,10 +28,11 @@ data class ThrustSeaLevelEntity(
     companion object {
         suspend fun insertThrustSeaLevel(
             thrustSeaLevelEntity: ThrustSeaLevelEntity?,
+            rocketId: Int?,
             myRoomDatabase: MyRoomDatabase
         ) {
             if(thrustSeaLevelEntity == null) return
-            thrustSeaLevelEntity.rocketId = thrustSeaLevelEntity.rocketId
+            thrustSeaLevelEntity.rocketId = rocketId
             myRoomDatabase.thrustSeaLevelDao().insertObject(thrustSeaLevelEntity)
         }
     }
