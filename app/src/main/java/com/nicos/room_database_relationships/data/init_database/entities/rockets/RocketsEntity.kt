@@ -48,7 +48,7 @@ data class RocketsEntity(
     val flickrImages: MutableList<String>?
 ) {
     companion object {
-        private suspend fun deleteAll(myRoomDatabase: MyRoomDatabase) = with(myRoomDatabase) {
+        internal suspend fun deleteAll(myRoomDatabase: MyRoomDatabase) = with(myRoomDatabase) {
             rocketsDao().deleteAll()
             heightDao().deleteAll()
             diameterDao().deleteAll()
