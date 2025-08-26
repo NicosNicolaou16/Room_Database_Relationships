@@ -23,17 +23,4 @@ data class ThrustSeaLevelEntity(
     var kN: Long?,
     var lbf: Long?,
     var rocketId: Int?
-) {
-
-    companion object {
-        suspend fun insertThrustSeaLevel(
-            thrustSeaLevelEntity: ThrustSeaLevelEntity?,
-            rocketId: Int?,
-            myRoomDatabase: MyRoomDatabase
-        ) {
-            if(thrustSeaLevelEntity == null) return
-            thrustSeaLevelEntity.rocketId = rocketId
-            myRoomDatabase.thrustSeaLevelDao().insertObject(thrustSeaLevelEntity)
-        }
-    }
-}
+)

@@ -1,11 +1,8 @@
-package com.nicos.room_database_relationships.data.init_database.entities.rockets
+package com.nicos.room_database_relationships.data.init_database.entities.rockets.dto
 
-import android.util.Log
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketsEntity
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterDiameter
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterFirstStage
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterHeight
@@ -13,15 +10,9 @@ import com.nicos.room_database_relationships.data.init_database.entities.type_co
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeight
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterRoles
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConvertersDate
-import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
-import kotlinx.coroutines.flow.flow
 import java.util.Date
 
-@Entity(
-    indices = [Index(value = ["id"], unique = true)],
-)
-data class RocketsEntity(
-    @PrimaryKey
+data class RocketsDto(
     val id: Int,
     val active: Boolean?,
     val stages: Int?,
@@ -35,6 +26,18 @@ data class RocketsEntity(
     val firstFlight: Date?,
     val country: String?,
     val company: String?,
+    @TypeConverters(ConverterHeight::class)
+    val height: HeightDto?,
+    @TypeConverters(ConverterDiameter::class)
+    val diameter: DiameterDto?,
+    @TypeConverters(ConverterMass::class)
+    val mass: MassDto?,
+    @TypeConverters(ConverterPayloadWeight::class)
+    @SerializedName("payload_weights")
+    val payloadWeights: MutableList<PayloadWeightsDto>,
+    @TypeConverters(ConverterFirstStage::class)
+    @SerializedName("first_stage")
+    val firstStage: FirstStageDto?,
     val wikipedia: String?,
     val description: String?,
     @SerializedName("rocket_id")
@@ -46,31 +49,24 @@ data class RocketsEntity(
     @TypeConverters(ConverterRoles::class)
     @SerializedName("flickr_images")
     val flickrImages: MutableList<String>?
-) {
-    companion object {
-        private suspend fun deleteAll(myRoomDatabase: MyRoomDatabase) = with(myRoomDatabase) {
-            rocketsDao().deleteAll()
-            heightDao().deleteAll()
-            diameterDao().deleteAll()
-            massDao().deleteAll()
-            payloadWeightDao().deleteAll()
-            firstStageDao().deleteAll()
-            thrustSeaLevelDao().deleteAll()
-            thrustVacuumDao().deleteAll()
-        }
+)
 
-        suspend fun getRocketById(
-            id: Int,
-            myRoomDatabase: MyRoomDatabase
-        ): RocketWIthRelationships? {
-            val rocket = myRoomDatabase.rocketsDao().getRocketByIdWithRelation(id)
-            return rocket
-        }
-
-        suspend fun getAllRockets(myRoomDatabase: MyRoomDatabase): MutableList<RocketWIthRelationships> {
-            val rockets: MutableList<RocketWIthRelationships> =
-                myRoomDatabase.rocketsDao().getAllRocketsWithRelationShips()
-            return rockets
-        }
-    }
+fun RocketsDto.toRocketEntity(): RocketsEntity {
+    return RocketsEntity(
+        id = id,
+        active = active,
+        stages = stages,
+        boosters = boosters,
+        costPerLaunch = costPerLaunch,
+        successRatePct = successRatePct,
+        firstFlight = firstFlight,
+        country = country,
+        company = company,
+        wikipedia = wikipedia,
+        description = description,
+        rocketId = rocketId,
+        rocketName = rocketName,
+        rocketType = rocketType,
+        flickrImages = flickrImages,
+    )
 }

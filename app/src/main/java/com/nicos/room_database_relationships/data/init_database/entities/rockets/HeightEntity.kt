@@ -4,7 +4,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 
 @Entity(
     indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"])],
@@ -23,17 +22,4 @@ data class HeightEntity(
     var meters: Double?,
     var feet: Double?,
     var rocketId: Int?
-) {
-
-    companion object {
-        suspend fun insertHeight(
-            heightEntity: HeightEntity?,
-            rocketId: Int?,
-            myRoomDatabase: MyRoomDatabase
-        ) {
-            if (heightEntity == null) return
-            heightEntity.rocketId = rocketId
-            myRoomDatabase.heightDao().insertObject(heightEntity)
-        }
-    }
-}
+)

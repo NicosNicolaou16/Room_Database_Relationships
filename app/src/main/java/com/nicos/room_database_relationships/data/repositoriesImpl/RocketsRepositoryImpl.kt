@@ -19,10 +19,10 @@ class RocketsRepositoryImpl @Inject constructor(
     override suspend fun getRockets(): Flow<MutableList<RocketWIthRelationships>> {
         return flow {
             val rockets = rocketsService.getRockets()
-            RocketsEntity.insertRockets(
+           /* RocketsEntity.insertRockets(
                 rocketsEntityList = rockets,
                 myRoomDatabase = myRoomDatabase
-            ).collect()
+            ).collect()*/
             val rocketsEntity: MutableList<RocketWIthRelationships> =
                 RocketsEntity.getAllRockets(myRoomDatabase)
             emit(rocketsEntity)

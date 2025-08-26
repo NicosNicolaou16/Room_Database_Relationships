@@ -8,7 +8,6 @@ import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustSeaLevel
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustVacuum
-import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 
 @Entity(
     indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"], unique = true)],
@@ -37,47 +36,4 @@ data class FirstStageEntity(
     @SerializedName("thrust_vacuum")
     var thrustVacuum: ThrustVacuumEntity?,
     var rocketId: Int?
-) {
-    companion object {
-        suspend fun insertFirstStage(
-            firstStageEntity: FirstStageEntity?,
-            rocketId: Int?,
-            myRoomDatabase: MyRoomDatabase
-        ) {
-            if (firstStageEntity == null) return
-            firstStageEntity.rocketId = rocketId
-            myRoomDatabase.firstStageDao().insertObject(firstStageEntity)
-
-            insertThrustSeaLevel(
-                firstStageEntity = firstStageEntity,
-                myRoomDatabase = myRoomDatabase
-            )
-            insertThrustVacuum(
-                firstStageEntity = firstStageEntity,
-                myRoomDatabase = myRoomDatabase
-            )
-        }
-
-        private suspend fun insertThrustSeaLevel(
-            firstStageEntity: FirstStageEntity?,
-            myRoomDatabase: MyRoomDatabase
-        ) {
-            ThrustSeaLevelEntity.Companion.insertThrustSeaLevel(
-                thrustSeaLevelEntity = firstStageEntity?.thrustSeaLevel,
-                rocketId = firstStageEntity?.rocketId,
-                myRoomDatabase = myRoomDatabase
-            )
-        }
-
-        private suspend fun insertThrustVacuum(
-            firstStageEntity: FirstStageEntity,
-            myRoomDatabase: MyRoomDatabase
-        ) {
-            ThrustVacuumEntity.Companion.insertThrustSeaLevel(
-                thrustVacuumEntity = firstStageEntity.thrustVacuum,
-                rocketId = firstStageEntity.rocketId,
-                myRoomDatabase = myRoomDatabase
-            )
-        }
-    }
-}
+)

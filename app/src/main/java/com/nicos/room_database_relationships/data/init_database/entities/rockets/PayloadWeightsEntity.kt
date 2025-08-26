@@ -4,7 +4,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 
 @Entity(
     indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"], unique = true)],
@@ -22,18 +21,4 @@ data class PayloadWeightsEntity(
     val kg: Long?,
     val lb: Long?,
     var rocketId: Int
-) {
-
-    companion object {
-        suspend fun insertPayloadWeights(
-            payloadWeightsEntityList: MutableList<PayloadWeightsEntity>,
-            rocketId: Int,
-            myRoomDatabase: MyRoomDatabase
-        ) {
-            payloadWeightsEntityList.forEach {
-                it.rocketId = rocketId
-            }
-            myRoomDatabase.payloadWeightDao().insertOrReplaceList(payloadWeightsEntityList)
-        }
-    }
-}
+)

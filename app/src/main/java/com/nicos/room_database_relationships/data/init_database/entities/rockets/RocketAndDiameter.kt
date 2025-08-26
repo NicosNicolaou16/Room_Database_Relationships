@@ -11,5 +11,4 @@ data class RocketAndDiameter(
         entityColumn = "rocketId"
     )
     var diameterEntity: DiameterEntity?,
-) {
-}
+)
