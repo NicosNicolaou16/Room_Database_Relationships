@@ -56,12 +56,11 @@ This project follows **Clean Architecture + MVVM**, organized into layers:
 
 ```
 data/
- ├─ dto/         # Data Transfer Objects from API
- ├─ entities/    # Room database entities
- ├─ dao/         # Data Access Objects (Room queries)
- ├─ repository/  # Repository pattern implementation
- └─ mapper/      # DTO ↔ Entity mappers
-
+ ├─ entities/dto/         # Data Transfer Objects from API
+ ├─ entities/rockets      # Room database entities
+ ├─ entities/dao/         # Data Access Objects (Room queries)
+ ├─ domain/repository/    # Repository pattern implementation
+ 
 di/              # Hilt modules for dependency injection
 
 ui/              # ViewModels and UI (Jetpack Compose / XML)
@@ -101,18 +100,12 @@ ui/              # ViewModels and UI (Jetpack Compose / XML)
 
 ---
 
-## 🚀 Future Improvements
+# Versioning
 
-* Add unit tests with JUnit & Mockito
-* Implement paging with **Paging 3**
-* Add offline-first caching strategies
-
----
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-Feel free to open a PR 🙌
+Target SDK version: 36 <br />
+Minimum SDK version: 29 <br />
+Kotlin version: 2.2.10 <br />
+Gradle version: 8.12.1 <br />
 
 ---
 
