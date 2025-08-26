@@ -1,7 +1,5 @@
 # Room Database Relationships
 
-Great! 🚀 Here’s a **complete GitHub-ready README template** for your repository:
-
 ---
 
 # 📦 Room Database Relationships in Android
