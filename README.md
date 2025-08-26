@@ -61,9 +61,9 @@ data/
  ├─ entities/dao/         # Data Access Objects (Room queries)
  ├─ domain/repository/    # Repository pattern implementation
  
-di/              # Hilt modules for dependency injection
+di/                       # Hilt modules for dependency injection
 
-ui/              # ViewModels and UI (Jetpack Compose / XML)
+ui/                       # ViewModels and UI (Jetpack Compose / XML)
 
 ```
 
