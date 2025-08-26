@@ -1,5 +1,6 @@
 package com.nicos.room_database_relationships.data.repositoriesImpl
 
+import androidx.room.withTransaction
 import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketWIthRelationships
@@ -11,6 +12,8 @@ import com.nicos.room_database_relationships.data.init_database.entities.rockets
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toMassEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toPayloadWeightsEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toRocketEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toThrustSeaLevelEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toThrustVacuumEntity
 import com.nicos.room_database_relationships.domain.network.RocketsService
 import com.nicos.room_database_relationships.domain.repositories.RocketsRepository
 import kotlinx.coroutines.Dispatchers
@@ -34,30 +37,50 @@ class RocketsRepositoryImpl @Inject constructor(
     }
 
     suspend fun saveRocketInLocalDatabase(rocketsDto: MutableList<RocketsDto>) {
-        RocketsEntity.deleteAll(myRoomDatabase)
-        rocketsDto.forEach { it ->
-            val rocketEntity = it.toRocketEntity()
-            myRoomDatabase.rocketsDao().insertObject(data = rocketEntity)
-            if (it.height != null) {
-                myRoomDatabase.heightDao()
-                    .insertObject(data = it.height.toHeightEntity(rocketEntity.id))
-            }
-            if (it.diameter != null) {
-                myRoomDatabase.diameterDao()
-                    .insertObject(data = it.diameter.toDiameterEntity(rocketEntity.id))
-            }
-            if (it.mass != null) {
-                myRoomDatabase.massDao().insertObject(data = it.mass.toMassEntity(rocketEntity.id))
-            }
-            it.payloadWeights.forEach { payloadWeightsDto ->
-                val payloadWeightsEntity: PayloadWeightsEntity =
-                    payloadWeightsDto.toPayloadWeightsEntity(rocketId = it.id)
-                myRoomDatabase.payloadWeightDao()
-                    .insertOrReplaceObject(data = payloadWeightsEntity)
-            }
-            if (it.firstStage != null) {
-                myRoomDatabase.firstStageDao()
-                    .insertObject(data = it.firstStage.toFirstStageEntity(rocketEntity.id))
+        myRoomDatabase.withTransaction {
+            RocketsEntity.deleteAll(myRoomDatabase)
+
+            rocketsDto.forEach { it ->
+                val rocketEntity = it.toRocketEntity()
+                myRoomDatabase.rocketsDao().insertObject(data = rocketEntity)
+                if (it.height != null) {
+                    myRoomDatabase.heightDao()
+                        .insertObject(data = it.height.toHeightEntity(rocketEntity.id))
+                }
+                if (it.diameter != null) {
+                    myRoomDatabase.diameterDao()
+                        .insertObject(data = it.diameter.toDiameterEntity(rocketEntity.id))
+                }
+                if (it.mass != null) {
+                    myRoomDatabase.massDao()
+                        .insertObject(data = it.mass.toMassEntity(rocketEntity.id))
+                }
+                it.payloadWeights.forEach { payloadWeightsDto ->
+                    val payloadWeightsEntity: PayloadWeightsEntity =
+                        payloadWeightsDto.toPayloadWeightsEntity(rocketId = it.id)
+                    myRoomDatabase.payloadWeightDao()
+                        .insertOrReplaceObject(data = payloadWeightsEntity)
+                }
+                if (it.firstStage != null) {
+                    myRoomDatabase.firstStageDao()
+                        .insertObject(data = it.firstStage.toFirstStageEntity(rocketEntity.id))
+                    if (it.firstStage.thrustSeaLevelDto != null) {
+                        myRoomDatabase.thrustSeaLevelDao()
+                            .insertObject(
+                                data = it.firstStage.thrustSeaLevelDto!!.toThrustSeaLevelEntity(
+                                    rocketEntity.id
+                                )
+                            )
+                    }
+                    if (it.firstStage.thrustVacuumDto != null) {
+                        myRoomDatabase.thrustVacuumDao()
+                            .insertObject(
+                                data = it.firstStage.thrustVacuumDto!!.toThrustVacuumEntity(
+                                    rocketEntity.id
+                                )
+                            )
+                    }
+                }
             }
         }
     }
