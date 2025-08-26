@@ -22,6 +22,11 @@ class MainViewModel @Inject constructor(
                     rocketWIthRelationships.forEach {
                         Log.d("rockets", it.rocketEntity.rocketName.toString())
                         Log.d("rockets", it.rocketEntity.description.toString())
+                        it.payloadWeightsEntityList.forEach { payloadWeightsEntity ->
+                            Log.d("rockets", payloadWeightsEntity.id.toString())
+                            Log.d("rockets", payloadWeightsEntity.kg.toString())
+                            Log.d("rockets", payloadWeightsEntity.lb.toString())
+                        }
                         Log.d("rockets", it.firstStageEntity.thrustSeaLevel.toString())
                         Log.d("rockets", it.firstStageEntity.thrustVacuum.toString())
                         Log.d("rockets", it.heightEntity.meters.toString())
