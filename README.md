@@ -115,4 +115,4 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 
 ---
 
-Do you want me to also **add sample code snippets** (like a `UserEntity`, `UserDao`, `DTO → Entity mapper`, and a Retrofit interface) inside the README so devs instantly understand how it works?
+Do you want me to also **add sample code snippets** (like a `RocketsEntity`, `RocketsDao`, `DTO → Entity`, and a Retrofit interface) inside the README so devs instantly understand how it works?
