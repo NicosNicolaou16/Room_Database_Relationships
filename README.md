@@ -90,12 +90,6 @@ ui/              # ViewModels and UI (Jetpack Compose / XML)
 
 ---
 
-## 📸 Screenshots
-
-(Add app screenshots here)
-
----
-
 ## 🚀 Future Improvements
 
 * Add unit tests with JUnit & Mockito
