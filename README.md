@@ -87,11 +87,11 @@ ui/                       # ViewModels and UI (Jetpack Compose / XML)
 
 ### 🔹 One-to-One
 
-* A **User** has one **Profile**
+* A **Rockets** has one **Mass**
 
 ### 🔹 One-to-Many
 
-* A **Category** has many **Products**
+* A **Rockets** has many **PayloadWeights**
 
 ### 🔹 Many-to-Many
 
