@@ -6,7 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
-    indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"])],
+    indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = RocketsEntity::class,
