@@ -120,3 +120,8 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 Do you want me to also **add sample code snippets** (like a `RocketsEntity`, `RocketsDao`,
 `DTO → Entity`, and a Retrofit interface) inside the README so devs instantly understand how it
 works?
+
+# Feeds/Urls/End point (References)
+
+https://github.com/r-spacex/SpaceX-API (GitHub) <br />
+https://docs.spacexdata.com/?version=latest (Postman) <br />
