@@ -25,15 +25,9 @@ data class FirstStageEntity(
     var id: Long,
     var reusable: Boolean?,
     var engines: Int?,
-    @SerializedName("fuel_amount_tons")
     var fuelAmountTons: Double?,
-    @SerializedName("burn_time_sec")
     var burnTimeSec: Long?,
-    @TypeConverters(ConverterThrustSeaLevel::class)
-    @SerializedName("thrust_sea_level")
     var thrustSeaLevel: ThrustSeaLevelEntity?,
-    @TypeConverters(ConverterThrustVacuum::class)
-    @SerializedName("thrust_vacuum")
     var thrustVacuum: ThrustVacuumEntity?,
     var rocketId: Int?
 )
