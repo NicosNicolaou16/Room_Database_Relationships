@@ -5,6 +5,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.nicos.room_database_relationships.data.init_database.BaseDao
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketWithPayloadWeight
 
 @Dao
 interface PayloadWeightDao : BaseDao<PayloadWeightsEntity, MutableList<PayloadWeightsEntity>> {

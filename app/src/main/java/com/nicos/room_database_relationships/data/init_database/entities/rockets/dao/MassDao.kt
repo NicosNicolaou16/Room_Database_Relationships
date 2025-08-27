@@ -5,6 +5,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.nicos.room_database_relationships.data.init_database.BaseDao
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.MassEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketAndMass
 
 @Dao
 interface MassDao : BaseDao<MassEntity, MutableList<MassEntity>> {

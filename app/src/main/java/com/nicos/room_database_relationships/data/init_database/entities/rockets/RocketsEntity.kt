@@ -1,20 +1,13 @@
 package com.nicos.room_database_relationships.data.init_database.entities.rockets
 
-import android.util.Log
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterDiameter
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterFirstStage
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterHeight
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterMass
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeight
+import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterRoles
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConvertersDate
-import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
-import kotlinx.coroutines.flow.flow
 import java.util.Date
 
 @Entity(
