@@ -8,6 +8,7 @@ import com.nicos.room_database_relationships.data.init_database.entities.type_co
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterHeight
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterMass
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeight
+import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeightManyToMany
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterRoles
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConvertersDate
 import java.util.Date
@@ -35,6 +36,9 @@ data class RocketsDto(
     @TypeConverters(ConverterPayloadWeight::class)
     @SerializedName("payload_weights")
     val payloadWeights: MutableList<PayloadWeightsDto>,
+    // Many To Many
+    @TypeConverters(ConverterPayloadWeightManyToMany::class)
+    val payloadWeightsManyToMany: MutableList<PayloadWeightsDtoManyToMany>,
     @TypeConverters(ConverterFirstStage::class)
     @SerializedName("first_stage")
     val firstStage: FirstStageDto?,

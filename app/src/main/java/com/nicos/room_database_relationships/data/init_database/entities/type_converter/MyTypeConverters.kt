@@ -8,6 +8,7 @@ import com.nicos.room_database_relationships.data.init_database.entities.rockets
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.HeightEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.MassEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsManyToManyEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustSeaLevelEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustVacuumEntity
 import java.text.DateFormat
@@ -61,6 +62,21 @@ class ConverterPayloadWeight {
 
     @TypeConverter
     fun fromPayloadWeightListToString(payloadWeightsEntityList: MutableList<PayloadWeightsEntity>?): String =
+        Gson().toJson(payloadWeightsEntityList)
+}
+
+class ConverterPayloadWeightManyToMany {
+
+    @TypeConverter
+    fun fromStringToPayloadWeightList(value: String): MutableList<PayloadWeightsManyToManyEntity>? {
+        return Gson().fromJson(
+            value,
+            object : TypeToken<MutableList<PayloadWeightsEntity>>() {}.type
+        )
+    }
+
+    @TypeConverter
+    fun fromPayloadWeightListToString(payloadWeightsEntityList: MutableList<PayloadWeightsManyToManyEntity>?): String =
         Gson().toJson(payloadWeightsEntityList)
 }
 

@@ -17,6 +17,8 @@ import com.nicos.room_database_relationships.data.init_database.entities.rockets
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.HeightEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.MassEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsManyToManyEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketWithPayloadWeightCrossRef
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketsEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustSeaLevelEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustVacuumEntity
@@ -25,9 +27,11 @@ import com.nicos.room_database_relationships.data.init_database.entities.rockets
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.HeightDao
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.MassDao
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.PayloadWeightDao
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.PayloadWeightManyToManyDao
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.RocketsDao
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.ThrustSeaLevelDao
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.ThrustVacuumDao
+import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeightManyToMany
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterRoles
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConvertersDate
 
@@ -39,6 +43,8 @@ import com.nicos.room_database_relationships.data.init_database.entities.type_co
         MassEntity::class,
         FirstStageEntity::class,
         PayloadWeightsEntity::class,
+        PayloadWeightsManyToManyEntity::class,
+        RocketWithPayloadWeightCrossRef::class,
         ThrustVacuumEntity::class,
         ThrustSeaLevelEntity::class
     ],
@@ -51,6 +57,7 @@ import com.nicos.room_database_relationships.data.init_database.entities.type_co
     ConverterMass::class,
     ConverterFirstStage::class,
     ConverterPayloadWeight::class,
+    ConverterPayloadWeightManyToMany::class,
     ConverterThrustSeaLevel::class,
     ConverterThrustVacuum::class,
     ConvertersDate::class,
@@ -62,6 +69,7 @@ abstract class MyRoomDatabase : RoomDatabase() {
     abstract fun massDao(): MassDao
     abstract fun firstStageDao(): FirstStageDao
     abstract fun payloadWeightDao(): PayloadWeightDao
+    abstract fun payloadWeightManyToManyDao(): PayloadWeightManyToManyDao
     abstract fun thrustVacuumDao(): ThrustVacuumDao
     abstract fun thrustSeaLevelDao(): ThrustSeaLevelDao
     abstract fun rocketsDao(): RocketsDao
