@@ -11,5 +11,4 @@ data class RocketWithPayloadWeight(
         entityColumn = "rocketId"
     )
     var payloadWeightsEntityList: MutableList<PayloadWeightsEntity>
-) {
-}
+)
