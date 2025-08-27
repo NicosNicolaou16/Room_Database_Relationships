@@ -4,10 +4,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import com.google.gson.annotations.SerializedName
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustSeaLevel
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustVacuum
 
 @Entity(
     indices = [Index(value = ["id"], unique = true), Index(value = ["rocketId"], unique = true)],
