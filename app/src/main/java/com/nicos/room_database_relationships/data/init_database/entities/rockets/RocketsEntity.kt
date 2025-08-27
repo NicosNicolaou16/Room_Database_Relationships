@@ -3,11 +3,7 @@ package com.nicos.room_database_relationships.data.init_database.entities.rocket
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import com.google.gson.annotations.SerializedName
 import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterRoles
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConvertersDate
 import java.util.Date
 
 @Entity(
