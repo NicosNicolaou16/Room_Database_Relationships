@@ -15,14 +15,16 @@
 
 # 📦 Room Database Relationships in Android
 
-This repository demonstrates how to implement **Room Database relationships** in Android applications with a full real-world example.
+This repository demonstrates how to implement **Room Database relationships** in Android
+applications with a full real-world example.
 It covers:
 
 * 🔗 **One-to-One**
 * 🔗 **One-to-Many**
 * 🔗 **Many-to-Many**
 
-The project also integrates with a **real API endpoint** using **Retrofit**, parses responses with **DTOs (Data Transfer Objects)**, and saves the data into the local Room database.
+The project also integrates with a **real API endpoint** using **Retrofit**, parses responses with *
+*DTOs (Data Transfer Objects)**, and saves the data into the local Room database.
 Built with **Hilt (Dependency Injection)** for clean architecture and testability.
 
 ---
@@ -115,4 +117,6 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 
 ---
 
-Do you want me to also **add sample code snippets** (like a `RocketsEntity`, `RocketsDao`, `DTO → Entity`, and a Retrofit interface) inside the README so devs instantly understand how it works?
+Do you want me to also **add sample code snippets** (like a `RocketsEntity`, `RocketsDao`,
+`DTO → Entity`, and a Retrofit interface) inside the README so devs instantly understand how it
+works?
