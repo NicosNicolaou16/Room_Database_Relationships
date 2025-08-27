@@ -19,25 +19,16 @@ data class RocketsEntity(
     val active: Boolean?,
     val stages: Int?,
     val boosters: Int?,
-    @SerializedName("cost_per_launch")
     val costPerLaunch: Long?,
-    @SerializedName("success_rate_pct")
     val successRatePct: Int?,
-    @TypeConverters(ConvertersDate::class)
-    @SerializedName("first_flight")
     val firstFlight: Date?,
     val country: String?,
     val company: String?,
     val wikipedia: String?,
     val description: String?,
-    @SerializedName("rocket_id")
     val rocketId: String?,
-    @SerializedName("rocket_name")
     val rocketName: String?,
-    @SerializedName("rocket_type")
     val rocketType: String?,
-    @TypeConverters(ConverterRoles::class)
-    @SerializedName("flickr_images")
     val flickrImages: MutableList<String>?
 ) {
     companion object {

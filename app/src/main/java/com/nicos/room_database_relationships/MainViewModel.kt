@@ -22,6 +22,11 @@ class MainViewModel @Inject constructor(
                     rocketWIthRelationships.forEach {
                         Log.d("rockets", it.rocketEntity.rocketName.toString())
                         Log.d("rockets", it.rocketEntity.description.toString())
+                        Log.d("rockets", it.rocketEntity.rocketId.toString())
+                        Log.d("rockets", it.rocketEntity.rocketType.toString())
+                        Log.d("rockets", it.rocketEntity.active.toString())
+                        Log.d("rockets", it.rocketEntity.stages.toString())
+                        Log.d("rockets", it.rocketEntity.flickrImages.toString())
                         it.payloadWeightsEntityList.forEach { payloadWeightsEntity ->
                             Log.d("rockets", payloadWeightsEntity.id.toString())
                             Log.d("rockets", payloadWeightsEntity.kg.toString())
