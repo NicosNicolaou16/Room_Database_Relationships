@@ -7,6 +7,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightWithRocketManyToMany
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsManyToManyEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketWithPayloadWeightCrossRef
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketWithPayloadWeightManyToMany
 
 @Dao
@@ -17,6 +18,9 @@ interface PayloadWeightManyToManyDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(payloadWeights: MutableList<PayloadWeightsManyToManyEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(rocketWithPayloadWeightCrossRef: RocketWithPayloadWeightCrossRef)
 
     @Transaction
     @Query("SELECT * FROM RocketsEntity WHERE id = :rocketId")

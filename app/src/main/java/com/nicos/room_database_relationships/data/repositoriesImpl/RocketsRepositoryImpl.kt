@@ -5,6 +5,7 @@ import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsManyToManyEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketWIthRelationships
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketWithPayloadWeightCrossRef
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketsEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.PayloadWeightsDtoManyToMany
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.RocketsDto
@@ -103,6 +104,12 @@ class RocketsRepositoryImpl @Inject constructor(
                                 rocketId = it.id
                             )
                         if (payloadWeightsEntity != null) {
+                            myRoomDatabase.payloadWeightManyToManyDao().insert(
+                                RocketWithPayloadWeightCrossRef(
+                                    id = it.id,
+                                    rocketId = payloadWeightsEntity.rocketId
+                                )
+                            )
                             myRoomDatabase.payloadWeightManyToManyDao()
                                 .insert(payloadWeight = payloadWeightsEntity)
                         }

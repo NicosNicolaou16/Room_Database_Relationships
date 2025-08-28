@@ -20,6 +20,11 @@ class MainViewModel @Inject constructor(
             rocketsRepositoryImpl.getRockets().collect { rocketWIthRelationships ->
                 withContext(Dispatchers.Main) {
                     rocketWIthRelationships.forEach {
+                        it.payloadWeightsEntityListManyToMany.forEach { payloadWeightsEntityListManyToMany ->
+                            Log.d("rockets1", payloadWeightsEntityListManyToMany.id.toString())
+                            Log.d("rockets1", payloadWeightsEntityListManyToMany.kg.toString())
+                            Log.d("rockets1", payloadWeightsEntityListManyToMany.lb.toString())
+                        }
                         Log.d("rockets", it.rocketEntity.rocketName.toString())
                         Log.d("rockets", it.rocketEntity.description.toString())
                         Log.d("rockets", it.rocketEntity.rocketId.toString())
