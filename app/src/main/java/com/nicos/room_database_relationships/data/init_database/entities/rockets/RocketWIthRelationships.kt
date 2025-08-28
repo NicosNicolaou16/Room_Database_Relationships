@@ -1,6 +1,7 @@
 package com.nicos.room_database_relationships.data.init_database.entities.rockets
 
 import androidx.room.Embedded
+import androidx.room.Junction
 import androidx.room.Relation
 
 data class RocketWIthRelationships(
@@ -43,4 +44,14 @@ data class RocketWIthRelationships(
         entityColumn = "rocketId"
     )
     var payloadWeightsEntityList: MutableList<PayloadWeightsEntity>,
+    @Relation(
+        parentColumn = "id",
+        entityColumn = "rocketId",
+        associateBy = Junction(
+            value = RocketWithPayloadWeightCrossRef::class,
+            parentColumn = "id",
+            entityColumn = "rocketId"
+        )
+    )
+    var payloadWeightsEntityListManyToMany: MutableList<PayloadWeightsManyToManyEntity>
 )
