@@ -14,13 +14,3 @@ data class RocketWithPayloadWeightManyToMany(
     )
     var payloadWeightsEntityList: MutableList<PayloadWeightsEntity>
 )
-
-data class PayloadWeightWithRocketManyToMany(
-    @Embedded
-    var payloadWeightsEntity: PayloadWeightsEntity,
-    @Relation(
-        parentColumn = "rocketId",
-        entityColumn = "id"
-    )
-    var rocketsEntity: RocketsEntity
-)
