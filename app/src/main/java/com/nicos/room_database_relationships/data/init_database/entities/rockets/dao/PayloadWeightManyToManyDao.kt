@@ -32,4 +32,7 @@ interface PayloadWeightManyToManyDao {
 
     @Query("DELETE FROM PayloadWeightsEntity")
     suspend fun deleteAll()
+
+    @Query("DELETE FROM RocketWithPayloadWeightCrossRef")
+    suspend fun deleteRelationship()
 }

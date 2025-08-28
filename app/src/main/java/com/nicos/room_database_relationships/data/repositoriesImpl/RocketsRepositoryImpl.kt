@@ -42,24 +42,35 @@ class RocketsRepositoryImpl @Inject constructor(
 
     suspend fun saveRocketInLocalDatabase(rocketsDto: MutableList<RocketsDto>) {
         myRoomDatabase.withTransaction {
+            // Delete all rockets
             RocketsEntity.deleteAll(myRoomDatabase)
 
             rocketsDto.forEach { it ->
                 val payloadWeightsDtoManyToManyList = mutableListOf<PayloadWeightsDtoManyToMany>()
                 val rocketEntity = it.toRocketEntity()
+
+                // Insert rocket entity
                 myRoomDatabase.rocketsDao().insertObject(data = rocketEntity)
+
+                // Insert height entity
                 if (it.height != null) {
                     myRoomDatabase.heightDao()
                         .insertObject(data = it.height.toHeightEntity(rocketEntity.id))
                 }
+
+                // Insert diameter entity
                 if (it.diameter != null) {
                     myRoomDatabase.diameterDao()
                         .insertObject(data = it.diameter.toDiameterEntity(rocketEntity.id))
                 }
+
+                // Insert mass entity
                 if (it.mass != null) {
                     myRoomDatabase.massDao()
                         .insertObject(data = it.mass.toMassEntity(rocketEntity.id))
                 }
+
+                // Insert payload weights
                 it.payloadWeights.forEach { payloadWeightsDto ->
                     /**
                      * Important Note: I reused the same tables from the one-to-many relationship example in order
@@ -79,9 +90,13 @@ class RocketsRepositoryImpl @Inject constructor(
                     myRoomDatabase.payloadWeightDao()
                         .insertOrReplaceObject(data = payloadWeightsEntity)
                 }
+
+                // Insert first stage
                 if (it.firstStage != null) {
                     myRoomDatabase.firstStageDao()
                         .insertObject(data = it.firstStage.toFirstStageEntity(rocketEntity.id))
+
+                    // Insert thrust sea level and vacuum
                     if (it.firstStage.thrustSeaLevelDto != null) {
                         myRoomDatabase.thrustSeaLevelDao()
                             .insertObject(
@@ -90,6 +105,8 @@ class RocketsRepositoryImpl @Inject constructor(
                                 )
                             )
                     }
+
+                    // Insert thrust vacuum
                     if (it.firstStage.thrustVacuumDto != null) {
                         myRoomDatabase.thrustVacuumDao()
                             .insertObject(
@@ -98,12 +115,16 @@ class RocketsRepositoryImpl @Inject constructor(
                                 )
                             )
                     }
+
+                    // Insert payload weights many to many
                     payloadWeightsDtoManyToManyList.forEach { payloadWeightsDtoManyToMany ->
                         val payloadWeightsEntity: PayloadWeightsManyToManyEntity? =
                             payloadWeightsDtoManyToMany.toPayloadWeightsManyToManyEntity(
                                 rocketId = it.id
                             )
                         if (payloadWeightsEntity != null) {
+
+                            // insert cross ref id
                             myRoomDatabase.payloadWeightManyToManyDao().insert(
                                 RocketWithPayloadWeightCrossRef(
                                     id = it.id,
