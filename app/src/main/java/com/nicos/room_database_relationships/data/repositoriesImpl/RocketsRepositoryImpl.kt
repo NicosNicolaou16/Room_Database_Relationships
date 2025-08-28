@@ -3,14 +3,17 @@ package com.nicos.room_database_relationships.data.repositoriesImpl
 import androidx.room.withTransaction
 import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsManyToManyEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketWIthRelationships
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketsEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.PayloadWeightsDtoManyToMany
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.RocketsDto
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toDiameterEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toFirstStageEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toHeightEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toMassEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toPayloadWeightsEntity
+import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toPayloadWeightsManyToManyEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toRocketEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toThrustSeaLevelEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dto.toThrustVacuumEntity
@@ -41,6 +44,7 @@ class RocketsRepositoryImpl @Inject constructor(
             RocketsEntity.deleteAll(myRoomDatabase)
 
             rocketsDto.forEach { it ->
+                val payloadWeightsDtoManyToManyList = mutableListOf<PayloadWeightsDtoManyToMany>()
                 val rocketEntity = it.toRocketEntity()
                 myRoomDatabase.rocketsDao().insertObject(data = rocketEntity)
                 if (it.height != null) {
@@ -56,6 +60,14 @@ class RocketsRepositoryImpl @Inject constructor(
                         .insertObject(data = it.mass.toMassEntity(rocketEntity.id))
                 }
                 it.payloadWeights.forEach { payloadWeightsDto ->
+                    // save the data from payloadWeightsDto to payloadWeightsManyToMany
+                    payloadWeightsDtoManyToManyList.add(
+                        PayloadWeightsDtoManyToMany(
+                            id = payloadWeightsDto.id,
+                            kg = payloadWeightsDto.kg,
+                            lb = payloadWeightsDto.lb
+                        )
+                    )
                     val payloadWeightsEntity: PayloadWeightsEntity =
                         payloadWeightsDto.toPayloadWeightsEntity(rocketId = it.id)
                     myRoomDatabase.payloadWeightDao()
@@ -79,6 +91,16 @@ class RocketsRepositoryImpl @Inject constructor(
                                     rocketEntity.id
                                 )
                             )
+                    }
+                    payloadWeightsDtoManyToManyList.forEach { payloadWeightsDtoManyToMany ->
+                        val payloadWeightsEntity: PayloadWeightsManyToManyEntity? =
+                            payloadWeightsDtoManyToMany.toPayloadWeightsManyToManyEntity(
+                                rocketId = it.id
+                            )
+                        if (payloadWeightsEntity != null) {
+                            myRoomDatabase.payloadWeightManyToManyDao()
+                                .insert(payloadWeight = payloadWeightsEntity)
+                        }
                     }
                 }
             }

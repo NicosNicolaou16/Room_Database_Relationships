@@ -71,13 +71,13 @@ class ConverterPayloadWeightManyToMany {
     fun fromStringToPayloadWeightList(value: String): MutableList<PayloadWeightsManyToManyEntity>? {
         return Gson().fromJson(
             value,
-            object : TypeToken<MutableList<PayloadWeightsEntity>>() {}.type
+            object : TypeToken<MutableList<PayloadWeightsManyToManyEntity>>() {}.type
         )
     }
 
     @TypeConverter
-    fun fromPayloadWeightListToString(payloadWeightsEntityList: MutableList<PayloadWeightsManyToManyEntity>?): String =
-        Gson().toJson(payloadWeightsEntityList)
+    fun fromPayloadWeightListToString(payloadWeightsManyToManyEntityList: MutableList<PayloadWeightsManyToManyEntity>?): String =
+        Gson().toJson(payloadWeightsManyToManyEntityList)
 }
 
 class ConverterFirstStage {

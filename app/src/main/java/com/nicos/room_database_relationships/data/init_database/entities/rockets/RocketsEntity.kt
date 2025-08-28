@@ -34,6 +34,7 @@ data class RocketsEntity(
             diameterDao().deleteAll()
             massDao().deleteAll()
             payloadWeightDao().deleteAll()
+            payloadWeightManyToManyDao().deleteAll()
             firstStageDao().deleteAll()
             thrustSeaLevelDao().deleteAll()
             thrustVacuumDao().deleteAll()
