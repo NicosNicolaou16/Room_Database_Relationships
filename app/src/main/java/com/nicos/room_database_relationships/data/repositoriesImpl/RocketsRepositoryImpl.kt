@@ -60,7 +60,10 @@ class RocketsRepositoryImpl @Inject constructor(
                         .insertObject(data = it.mass.toMassEntity(rocketEntity.id))
                 }
                 it.payloadWeights.forEach { payloadWeightsDto ->
-                    // save the data from payloadWeightsDto to payloadWeightsManyToMany
+                    /**
+                     * Important Note: I reused the same tables from the one-to-many relationship example in order to demonstrate the many-to-many setup.\
+                     * To avoid confusion, I separated them by creating new entities specifically for this example.
+                     * */
                     payloadWeightsDtoManyToManyList.add(
                         PayloadWeightsDtoManyToMany(
                             id = payloadWeightsDto.id,
