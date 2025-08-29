@@ -107,7 +107,7 @@ ui/                       # ViewModels and UI (Jetpack Compose / XML)
 Target SDK version: 36 <br />
 Minimum SDK version: 29 <br />
 Kotlin version: 2.2.10 <br />
-Gradle version: 8.12.1 <br />
+Gradle version: 8.12.2 <br />
 
 ---
 
