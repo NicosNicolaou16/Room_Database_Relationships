@@ -61,11 +61,12 @@ data/
  ├─ entities/dto/         # Data Transfer Objects from API
  ├─ entities/rockets      # Room database entities
  ├─ entities/dao/         # Data Access Objects (Room queries)
- ├─ domain/repository/    # Repository pattern implementation
+ 
+ domain/repository/       # Repository pattern implementation
  
 di/                       # Hilt modules for dependency injection
 
-ui/                       # ViewModels and UI (Jetpack Compose / XML)
+room_database_relationships/ # ViewModels and UI (Jetpack Compose / XML)
 
 ```
 
