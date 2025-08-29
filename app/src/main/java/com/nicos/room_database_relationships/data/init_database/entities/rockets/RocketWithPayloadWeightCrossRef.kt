@@ -2,8 +2,8 @@ package com.nicos.room_database_relationships.data.init_database.entities.rocket
 
 import androidx.room.Entity
 
-@Entity(primaryKeys = ["id", "rocketId"])
+@Entity(primaryKeys = ["rocketId", "payloadWeightId"])
 data class RocketWithPayloadWeightCrossRef(
-    val id: Int,
     val rocketId: Int,
+    val payloadWeightId: Long,
 )

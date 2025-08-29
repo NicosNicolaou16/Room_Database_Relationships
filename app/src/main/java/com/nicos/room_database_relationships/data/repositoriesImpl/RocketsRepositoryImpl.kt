@@ -119,20 +119,18 @@ class RocketsRepositoryImpl @Inject constructor(
                     // Insert payload weights many to many
                     payloadWeightsDtoManyToManyList.forEach { payloadWeightsDtoManyToMany ->
                         val payloadWeightsEntity: PayloadWeightsManyToManyEntity? =
-                            payloadWeightsDtoManyToMany.toPayloadWeightsManyToManyEntity(
-                                rocketId = it.id
-                            )
+                            payloadWeightsDtoManyToMany.toPayloadWeightsManyToManyEntity()
                         if (payloadWeightsEntity != null) {
 
+                            val ids = myRoomDatabase.payloadWeightManyToManyDao()
+                                .insert(payloadWeight = payloadWeightsEntity)
                             // insert cross ref id
                             myRoomDatabase.payloadWeightManyToManyDao().insert(
                                 RocketWithPayloadWeightCrossRef(
-                                    id = it.id,
-                                    rocketId = payloadWeightsEntity.rocketId
+                                    rocketId = it.id,
+                                    payloadWeightId = ids
                                 )
                             )
-                            myRoomDatabase.payloadWeightManyToManyDao()
-                                .insert(payloadWeight = payloadWeightsEntity)
                         }
                     }
                 }

@@ -46,11 +46,11 @@ data class RocketWIthRelationships(
     var payloadWeightsEntityList: MutableList<PayloadWeightsEntity>,
     @Relation(
         parentColumn = "id",
-        entityColumn = "rocketId",
+        entityColumn = "ids",
         associateBy = Junction(
             value = RocketWithPayloadWeightCrossRef::class,
-            parentColumn = "id",
-            entityColumn = "rocketId"
+            parentColumn = "rocketId",
+            entityColumn = "payloadWeightId"
         )
     )
     var payloadWeightsEntityListManyToMany: MutableList<PayloadWeightsManyToManyEntity>

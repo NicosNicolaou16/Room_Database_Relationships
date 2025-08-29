@@ -6,11 +6,15 @@ import androidx.room.Relation
 
 data class RocketWithPayloadWeightManyToMany(
     @Embedded
-    var rocketsEntity: RocketsEntity,
+    val rocketsEntity: RocketsEntity,
     @Relation(
         parentColumn = "id",
-        entityColumn = "rocketId",
-        associateBy = Junction(RocketWithPayloadWeightCrossRef::class)
+        entityColumn = "ids",
+        associateBy = Junction(
+            value = RocketWithPayloadWeightCrossRef::class,
+            parentColumn = "rocketId",
+            entityColumn = "payloadWeightId"
+        )
     )
-    var payloadWeightsEntityList: MutableList<PayloadWeightsEntity>
+    val payloadWeightsManyToManyEntityList: MutableList<PayloadWeightsManyToManyEntity>
 )

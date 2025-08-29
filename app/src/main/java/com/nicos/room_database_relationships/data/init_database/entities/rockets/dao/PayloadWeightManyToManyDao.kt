@@ -30,9 +30,11 @@ interface PayloadWeightManyToManyDao {
     @Query("SELECT * FROM PayloadWeightsEntity WHERE id = :payloadId")
     suspend fun getPayloadWithRockets(payloadId: Int): MutableList<PayloadWeightWithRocketManyToMany>
 
+    @Transaction
     @Query("DELETE FROM PayloadWeightsEntity")
     suspend fun deleteAll()
 
+    @Transaction
     @Query("DELETE FROM RocketWithPayloadWeightCrossRef")
     suspend fun deleteRelationship()
 }

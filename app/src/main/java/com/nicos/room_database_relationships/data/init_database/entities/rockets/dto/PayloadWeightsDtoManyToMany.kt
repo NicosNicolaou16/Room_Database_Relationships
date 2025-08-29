@@ -8,12 +8,11 @@ data class PayloadWeightsDtoManyToMany(
     val lb: Long?,
 )
 
-fun PayloadWeightsDtoManyToMany.toPayloadWeightsManyToManyEntity(rocketId: Int): PayloadWeightsManyToManyEntity {
+fun PayloadWeightsDtoManyToMany.toPayloadWeightsManyToManyEntity(): PayloadWeightsManyToManyEntity {
     return PayloadWeightsManyToManyEntity(
         ids = 0,
         id = id,
         kg = kg,
         lb = lb,
-        rocketId = rocketId
     )
 }
