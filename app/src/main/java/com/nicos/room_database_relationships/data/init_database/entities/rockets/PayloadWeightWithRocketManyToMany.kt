@@ -11,7 +11,7 @@ data class PayloadWeightWithRocketManyToMany(
         parentColumn = "ids",
         entityColumn = "id",
         associateBy = Junction(
-            RocketWithPayloadWeightCrossRef::class,
+            value = RocketWithPayloadWeightCrossRef::class,
             parentColumn = "payloadWeightId",
             entityColumn = "rocketId"
         )
