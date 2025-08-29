@@ -24,11 +24,11 @@ interface PayloadWeightManyToManyDao {
 
     @Transaction
     @Query("SELECT * FROM RocketsEntity WHERE id = :rocketId")
-    suspend fun getRocketWithPayloads(rocketId: Int): List<RocketWithPayloadWeightManyToMany>
+    suspend fun getRocketWithPayloads(rocketId: Int): MutableList<RocketWithPayloadWeightManyToMany>
 
     @Transaction
     @Query("SELECT * FROM PayloadWeightsEntity WHERE id = :payloadId")
-    suspend fun getPayloadWithRockets(payloadId: Int): List<PayloadWeightWithRocketManyToMany>
+    suspend fun getPayloadWithRockets(payloadId: Int): MutableList<PayloadWeightWithRocketManyToMany>
 
     @Query("DELETE FROM PayloadWeightsEntity")
     suspend fun deleteAll()
