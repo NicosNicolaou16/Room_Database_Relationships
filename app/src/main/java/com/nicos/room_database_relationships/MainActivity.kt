@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.nicos.room_database_relationships.ui.theme.Room_Database_RelationshipsTheme
@@ -46,6 +47,7 @@ fun Greeting(
     ) {
         Text(
             text = "Welcome to Room Database Relationships Example, Check the LogCat (View Model)",
+            textAlign = TextAlign.Center,
             modifier = modifier
         )
     }
