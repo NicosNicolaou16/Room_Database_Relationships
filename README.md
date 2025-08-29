@@ -111,10 +111,6 @@ Gradle version: 8.12.2 <br />
 
 ---
 
-Do you want me to also **add sample code snippets** (like a `RocketsEntity`, `RocketsDao`,
-`DTO → Entity`, and a Retrofit interface) inside the README so devs instantly understand how it
-works?
-
 # Feeds/Urls/End point (References)
 
 https://github.com/r-spacex/SpaceX-API (GitHub) <br />
