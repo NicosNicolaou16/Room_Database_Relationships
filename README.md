@@ -89,7 +89,7 @@ ui/                       # ViewModels and UI (Jetpack Compose / XML)
 
 ### 🔹 One-to-One
 
-* A **Rockets** has one **Mass**
+* A **Rockets** has one **Height**
 
 ### 🔹 One-to-Many
 
@@ -97,8 +97,8 @@ ui/                       # ViewModels and UI (Jetpack Compose / XML)
 
 ### 🔹 Many-to-Many
 
-* A **Student** can enroll in many **Courses**
-* A **Course** can have many **Students**
+* A **Rockets** can enroll in many **PayloadWeights**
+* A **PayloadWeights** can have many **Rockets**
 
 ---
 
