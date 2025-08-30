@@ -84,8 +84,8 @@ room_database_relationships/ # ViewModels and UI (Jetpack Compose / XML)
 
 ### 🔹 Many-to-Many
 
-* A **Rockets** can enroll in many **PayloadWeights**
-* A **PayloadWeights** can have many **Rockets**
+* A **Rockets** can enroll in many **to-PayloadWeights (Many-Many example)**
+* A **PayloadWeights (Many-Many example)** can have many **Rockets**
 
 ---
 
