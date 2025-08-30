@@ -5,11 +5,11 @@ import androidx.room.Relation
 
 data class FirstStageAndThrustVacuum(
     @Embedded
-    var firstStageEntity: FirstStageEntity,
+    val firstStageEntity: FirstStageEntity,
     @Relation(
         parentColumn = "rocketId",
         entityColumn = "rocketId"
     )
-    var thrustVacuumEntity: ThrustVacuumEntity?,
+    val thrustVacuumEntity: ThrustVacuumEntity?,
 
     )

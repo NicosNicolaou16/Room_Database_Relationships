@@ -5,10 +5,10 @@ import androidx.room.Relation
 
 data class RocketAndMass(
     @Embedded
-    var rocketsEntity: RocketsEntity,
+    val rocketsEntity: RocketsEntity,
     @Relation(
         parentColumn = "id",
         entityColumn = "rocketId"
     )
-    var massEntity: MassEntity,
+    val massEntity: MassEntity,
 )

@@ -20,5 +20,5 @@ data class PayloadWeightsEntity(
     val id: String?,
     val kg: Long?,
     val lb: Long?,
-    var rocketId: Int
+    val rocketId: Int
 )

@@ -18,8 +18,8 @@ import androidx.room.PrimaryKey
 )
 data class HeightEntity(
     @PrimaryKey(autoGenerate = true)
-    var id: Long = 0,
-    var meters: Double?,
-    var feet: Double?,
-    var rocketId: Int?
+    val id: Long = 0,
+    val meters: Double?,
+    val feet: Double?,
+    val rocketId: Int?
 )

@@ -18,8 +18,8 @@ import androidx.room.PrimaryKey
 )
 data class DiameterEntity(
     @PrimaryKey(autoGenerate = true)
-    var id: Long,
-    var meters: Double?,
-    var feet: Double?,
-    var rocketId: Int?
+    val id: Long,
+    val meters: Double?,
+    val feet: Double?,
+    val rocketId: Int?
 )

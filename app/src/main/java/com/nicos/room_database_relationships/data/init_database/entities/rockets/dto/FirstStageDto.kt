@@ -7,19 +7,19 @@ import com.nicos.room_database_relationships.data.init_database.entities.type_co
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustVacuum
 
 data class FirstStageDto(
-    var reusable: Boolean?,
-    var engines: Int?,
+    val reusable: Boolean?,
+    val engines: Int?,
     @SerializedName("fuel_amount_tons")
-    var fuelAmountTons: Double?,
+    val fuelAmountTons: Double?,
     @SerializedName("burn_time_sec")
-    var burnTimeSec: Long?,
+    val burnTimeSec: Long?,
     @TypeConverters(ConverterThrustSeaLevel::class)
     @SerializedName("thrust_sea_level")
-    var thrustSeaLevelDto: ThrustSeaLevelDto?,
+    val thrustSeaLevelDto: ThrustSeaLevelDto?,
     @TypeConverters(ConverterThrustVacuum::class)
     @SerializedName("thrust_vacuum")
-    var thrustVacuumDto: ThrustVacuumDto?,
-    var rocketId: Int?
+    val thrustVacuumDto: ThrustVacuumDto?,
+    val rocketId: Int?
 )
 
 fun FirstStageDto.toFirstStageEntity(rocketId: Int?) = FirstStageEntity(

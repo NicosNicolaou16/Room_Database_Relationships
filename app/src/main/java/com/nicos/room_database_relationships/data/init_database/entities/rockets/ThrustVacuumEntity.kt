@@ -18,8 +18,8 @@ import androidx.room.PrimaryKey
 )
 data class ThrustVacuumEntity(
     @PrimaryKey(autoGenerate = true)
-    var id: Long,
-    var kN: Long?,
-    var lbf: Long?,
-    var rocketId: Int?
+    val id: Long,
+    val kN: Long?,
+    val lbf: Long?,
+    val rocketId: Int?
 )

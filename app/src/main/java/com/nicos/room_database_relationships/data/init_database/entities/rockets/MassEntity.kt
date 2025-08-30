@@ -21,5 +21,5 @@ data class MassEntity(
     val id: Long,
     val kg: Long?,
     val lb: Long?,
-    var rocketId: Int?
+    val rocketId: Int?
 )

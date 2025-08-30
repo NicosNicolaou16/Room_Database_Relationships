@@ -3,8 +3,8 @@ package com.nicos.room_database_relationships.data.init_database.entities.rocket
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.HeightEntity
 
 data class HeightDto(
-    var meters: Double?,
-    var feet: Double?,
+    val meters: Double?,
+    val feet: Double?,
 )
 
 fun HeightDto.toHeightEntity(rocketId: Int) = HeightEntity(

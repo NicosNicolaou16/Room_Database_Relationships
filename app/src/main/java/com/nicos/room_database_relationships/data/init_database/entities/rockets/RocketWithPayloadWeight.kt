@@ -5,10 +5,10 @@ import androidx.room.Relation
 
 data class RocketWithPayloadWeight(
     @Embedded
-    var rocketsEntity: RocketsEntity,
+    val rocketsEntity: RocketsEntity,
     @Relation(
         parentColumn = "id",
         entityColumn = "rocketId"
     )
-    var payloadWeightsEntityList: MutableList<PayloadWeightsEntity>
+    val payloadWeightsEntityList: MutableList<PayloadWeightsEntity>
 )

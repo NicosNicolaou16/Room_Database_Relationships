@@ -6,44 +6,44 @@ import androidx.room.Relation
 
 data class RocketWIthRelationships(
     @Embedded
-    var rocketEntity: RocketsEntity,
+    val rocketEntity: RocketsEntity,
     @Relation(
         parentColumn = "id",
         entityColumn = "rocketId"
     )
-    var firstStageEntity: FirstStageEntity,
-    @Relation(
-        entity = FirstStageEntity::class,
-        parentColumn = "id",
-        entityColumn = "rocketId"
-    )
-    var firstStageAndThrustSeaLevel: FirstStageAndThrustSeaLevel,
+    val firstStageEntity: FirstStageEntity,
     @Relation(
         entity = FirstStageEntity::class,
         parentColumn = "id",
         entityColumn = "rocketId"
     )
-    var firstStageAndThrustVacuum: FirstStageAndThrustVacuum,
+    val firstStageAndThrustSeaLevel: FirstStageAndThrustSeaLevel,
+    @Relation(
+        entity = FirstStageEntity::class,
+        parentColumn = "id",
+        entityColumn = "rocketId"
+    )
+    val firstStageAndThrustVacuum: FirstStageAndThrustVacuum,
     @Relation(
         parentColumn = "id",
         entityColumn = "rocketId"
     )
-    var heightEntity: HeightEntity,
+    val heightEntity: HeightEntity,
     @Relation(
         parentColumn = "id",
         entityColumn = "rocketId"
     )
-    var diameterEntity: DiameterEntity,
+    val diameterEntity: DiameterEntity,
     @Relation(
         parentColumn = "id",
         entityColumn = "rocketId"
     )
-    var massEntity: MassEntity,
+    val massEntity: MassEntity,
     @Relation(
         parentColumn = "id",
         entityColumn = "rocketId"
     )
-    var payloadWeightsEntityList: MutableList<PayloadWeightsEntity>,
+    val payloadWeightsEntityList: MutableList<PayloadWeightsEntity>,
     @Relation(
         parentColumn = "id",
         entityColumn = "ids",
@@ -53,5 +53,5 @@ data class RocketWIthRelationships(
             entityColumn = "payloadWeightId"
         )
     )
-    var payloadWeightsEntityListManyToMany: MutableList<PayloadWeightsManyToManyEntity>
+    val payloadWeightsEntityListManyToMany: MutableList<PayloadWeightsManyToManyEntity>
 )

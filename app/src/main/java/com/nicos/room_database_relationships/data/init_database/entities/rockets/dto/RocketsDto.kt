@@ -11,7 +11,6 @@ import com.nicos.room_database_relationships.data.init_database.entities.type_co
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeightManyToMany
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterRoles
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConvertersDate
-import kotlinx.serialization.Transient
 import java.util.Date
 
 data class RocketsDto(

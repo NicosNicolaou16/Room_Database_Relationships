@@ -5,10 +5,10 @@ import androidx.room.Relation
 
 data class FirstStageAndThrustSeaLevel(
     @Embedded
-    var firstStageEntity: FirstStageEntity,
+    val firstStageEntity: FirstStageEntity,
     @Relation(
         parentColumn = "rocketId",
         entityColumn = "rocketId"
     )
-    var thrustSeaLevelEntity: ThrustSeaLevelEntity?,
+    val thrustSeaLevelEntity: ThrustSeaLevelEntity?,
 )

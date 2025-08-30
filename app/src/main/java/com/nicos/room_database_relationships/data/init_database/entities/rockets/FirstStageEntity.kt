@@ -18,12 +18,12 @@ import androidx.room.PrimaryKey
 )
 data class FirstStageEntity(
     @PrimaryKey(autoGenerate = true)
-    var id: Long,
-    var reusable: Boolean?,
-    var engines: Int?,
-    var fuelAmountTons: Double?,
-    var burnTimeSec: Long?,
-    var thrustSeaLevel: ThrustSeaLevelEntity?,
-    var thrustVacuum: ThrustVacuumEntity?,
-    var rocketId: Int?
+    val id: Long,
+    val reusable: Boolean?,
+    val engines: Int?,
+    val fuelAmountTons: Double?,
+    val burnTimeSec: Long?,
+    val thrustSeaLevel: ThrustSeaLevelEntity?,
+    val thrustVacuum: ThrustVacuumEntity?,
+    val rocketId: Int?
 )

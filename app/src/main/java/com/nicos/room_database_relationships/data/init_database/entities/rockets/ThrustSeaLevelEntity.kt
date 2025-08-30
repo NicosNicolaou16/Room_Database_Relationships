@@ -19,8 +19,8 @@ import com.nicos.room_database_relationships.data.init_database.MyRoomDatabase
 )
 data class ThrustSeaLevelEntity(
     @PrimaryKey(autoGenerate = true)
-    var id: Long,
-    var kN: Long?,
-    var lbf: Long?,
-    var rocketId: Int?
+    val id: Long,
+    val kN: Long?,
+    val lbf: Long?,
+    val rocketId: Int?
 )
