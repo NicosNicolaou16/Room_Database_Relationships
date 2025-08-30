@@ -72,20 +72,6 @@ room_database_relationships/ # ViewModels and UI (Jetpack Compose / XML)
 
 ---
 
-## ⚡ Setup
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/room-relationships-demo.git
-   cd room-relationships-demo
-   ```
-2. Open in **Android Studio**
-3. Sync Gradle dependencies
-4. Run on emulator/device
-
----
-
 ## 📊 Example Relationships
 
 ### 🔹 One-to-One
