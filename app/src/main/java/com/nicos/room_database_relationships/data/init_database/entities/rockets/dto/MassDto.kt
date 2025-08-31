@@ -2,7 +2,6 @@ package com.nicos.room_database_relationships.data.init_database.entities.rocket
 
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.MassEntity
 
-
 data class MassDto(
     val kg: Long?,
     val lb: Long?,
