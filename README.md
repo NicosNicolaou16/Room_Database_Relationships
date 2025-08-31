@@ -92,6 +92,8 @@ room_database_relationships/ # ViewModels and UI (Jetpack Compose / XML)
 > [!IMPORTANT]  
 > Check my article for the setup :point_right: [Setting Up Relationships in Room Database - Medium]() :point_left: <br />
 
+---
+
 # Versioning
 
 Target SDK version: 36 <br />
