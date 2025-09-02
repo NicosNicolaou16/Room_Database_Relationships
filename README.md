@@ -90,7 +90,7 @@ room_database_relationships/ # ViewModels and UI (Jetpack Compose / XML)
 ---
 
 > [!IMPORTANT]  
-> Check my article for the setup :point_right: [Setting Up Relationships in Room Database - Medium]() :point_left: <br />
+> Check my article for the setup :point_right: [Setting Up Relationships in Room Database - Medium](https://medium.com/@nicosnicolaou/setting-up-relationships-in-room-database-a7e14bab4754) :point_left: <br />
 
 ---
 
