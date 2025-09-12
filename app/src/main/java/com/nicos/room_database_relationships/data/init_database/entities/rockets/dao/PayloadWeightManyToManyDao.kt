@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.Transaction
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightWithRocketManyToMany
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsManyToManyEntity
@@ -28,6 +29,11 @@ interface PayloadWeightManyToManyDao {
 
     @Transaction
     @Query("SELECT * FROM PayloadWeightsEntity WHERE id = :payloadId")
+    // This annotation tells Room to analyze the return type (PayloadWeightWithRocketManyToMany)
+    // and optimize the query to fetch only the columns that are actually used by that type.
+    // It helps in avoiding the fetching of unnecessary data, which can improve performance,
+    // especially with complex relationships or tables with many columns.
+    @RewriteQueriesToDropUnusedColumns
     suspend fun getPayloadWithRockets(payloadId: Int): MutableList<PayloadWeightWithRocketManyToMany>
 
     @Transaction
