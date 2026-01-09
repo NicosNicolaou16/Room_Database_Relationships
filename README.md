@@ -96,12 +96,12 @@ room_database_relationships/ # ViewModels and UI (Jetpack Compose / XML)
 
 # Versioning
 
-KSP version: 2.2.20-2.0.3 <br />
-Room version: 2.8.0 <br />
+KSP version: 2.3.4 <br />
+Room version: 2.8.4 <br />
 Target SDK version: 36 <br />
 Minimum SDK version: 29 <br />
-Kotlin version: 2.2.20 <br />
-Gradle version: 8.13.0 <br />
+Kotlin version: 2.3.0 <br />
+Gradle version: 8.13.2 <br />
 
 ---
 
