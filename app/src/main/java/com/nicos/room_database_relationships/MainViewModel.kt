@@ -17,29 +17,35 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            rocketsRepositoryImpl.getRockets().collect { rocketWIthRelationships ->
+            rocketsRepositoryImpl.getRockets().collect { rocketWithRelationshipsList ->
                 withContext(Dispatchers.Main) {
-                    rocketWIthRelationships.forEach {
-                        it.payloadWeightsEntityListManyToMany.forEach { payloadWeightsEntityListManyToMany ->
-                            Log.d("rockets1", payloadWeightsEntityListManyToMany.id.toString())
-                            Log.d("rockets1", payloadWeightsEntityListManyToMany.kg.toString())
-                            Log.d("rockets1", payloadWeightsEntityListManyToMany.lb.toString())
+                    rocketWithRelationshipsList.forEach { rocketWithRelationships ->
+                        val rocketDetails = """
+                            --- Rocket Details ---
+                            Rocket Name: ${rocketWithRelationships.rocketEntity.rocketName}
+                            Description: ${rocketWithRelationships.rocketEntity.description}
+                            Rocket ID: ${rocketWithRelationships.rocketEntity.rocketId}
+                            Rocket Type: ${rocketWithRelationships.rocketEntity.rocketType}
+                            Active: ${rocketWithRelationships.rocketEntity.active}
+                            Stages: ${rocketWithRelationships.rocketEntity.stages}
+                            Flickr Images: ${rocketWithRelationships.rocketEntity.flickrImages}
+                            Height (meters): ${rocketWithRelationships.heightEntity.meters}
+                            First Stage Thrust (Sea Level): ${rocketWithRelationships.firstStageEntity.thrustSeaLevel}
+                            First Stage Thrust (Vacuum): ${rocketWithRelationships.firstStageEntity.thrustVacuum}
+                        """.trimIndent()
+                        Log.d("ROCKET_DATA", rocketDetails)
+
+                        rocketWithRelationships.payloadWeightsEntityList.forEach { payloadWeight ->
+                            val payloadDetails =
+                                "One-to-Many Payload: id=${payloadWeight.id}, kg=${payloadWeight.kg}, lb=${payloadWeight.lb}"
+                            Log.d("ROCKET_DATA_PAYLOAD", payloadDetails)
                         }
-                        Log.d("rockets", it.rocketEntity.rocketName.toString())
-                        Log.d("rockets", it.rocketEntity.description.toString())
-                        Log.d("rockets", it.rocketEntity.rocketId.toString())
-                        Log.d("rockets", it.rocketEntity.rocketType.toString())
-                        Log.d("rockets", it.rocketEntity.active.toString())
-                        Log.d("rockets", it.rocketEntity.stages.toString())
-                        Log.d("rockets", it.rocketEntity.flickrImages.toString())
-                        it.payloadWeightsEntityList.forEach { payloadWeightsEntity ->
-                            Log.d("rockets", payloadWeightsEntity.id.toString())
-                            Log.d("rockets", payloadWeightsEntity.kg.toString())
-                            Log.d("rockets", payloadWeightsEntity.lb.toString())
+
+                        rocketWithRelationships.payloadWeightsEntityListManyToMany.forEach { payloadWeight ->
+                            val payloadDetails =
+                                "Many-to-Many Payload: id=${payloadWeight.id}, kg=${payloadWeight.kg}, lb=${payloadWeight.lb}"
+                            Log.d("ROCKET_DATA_PAYLOAD", payloadDetails)
                         }
-                        Log.d("rockets", it.firstStageEntity.thrustSeaLevel.toString())
-                        Log.d("rockets", it.firstStageEntity.thrustVacuum.toString())
-                        Log.d("rockets", it.heightEntity.meters.toString())
                     }
                 }
             }
