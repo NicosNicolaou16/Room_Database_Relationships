@@ -3,13 +3,8 @@ package com.nicos.room_database_relationships.data.init_database.entities.rocket
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.RocketsEntity
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterDiameter
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterFirstStage
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterHeight
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterMass
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeight
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeightManyToMany
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterRoles
+import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustSeaLevel
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConvertersDate
 import java.util.Date
 
@@ -27,19 +22,16 @@ data class RocketsDto(
     val firstFlight: Date?,
     val country: String?,
     val company: String?,
-    @TypeConverters(ConverterHeight::class)
     val height: HeightDto?,
-    @TypeConverters(ConverterDiameter::class)
     val diameter: DiameterDto?,
-    @TypeConverters(ConverterMass::class)
     val mass: MassDto?,
-    @TypeConverters(ConverterPayloadWeight::class)
+    @TypeConverters(ConverterThrustSeaLevel::class)
+    @SerializedName("thrust_sea_level")
+    val thrustSeaLevelDto: ThrustSeaLevelDto,
     @SerializedName("payload_weights")
     val payloadWeights: MutableList<PayloadWeightsDto>,
     // Many To Many
-    @TypeConverters(ConverterPayloadWeightManyToMany::class)
     val payloadWeightsManyToMany: MutableList<PayloadWeightsDtoManyToMany>,
-    @TypeConverters(ConverterFirstStage::class)
     @SerializedName("first_stage")
     val firstStage: FirstStageDto?,
     val wikipedia: String?,

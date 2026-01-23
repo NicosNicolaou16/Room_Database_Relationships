@@ -5,13 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterDiameter
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterFirstStage
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterHeight
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterMass
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeight
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustSeaLevel
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustVacuum
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.DiameterEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.FirstStageEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.HeightEntity
@@ -31,8 +24,9 @@ import com.nicos.room_database_relationships.data.init_database.entities.rockets
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.RocketsDao
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.ThrustSeaLevelDao
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.dao.ThrustVacuumDao
-import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterPayloadWeightManyToMany
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterRoles
+import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustSeaLevel
+import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConverterThrustVacuum
 import com.nicos.room_database_relationships.data.init_database.entities.type_converter.ConvertersDate
 
 @Database(
@@ -52,12 +46,6 @@ import com.nicos.room_database_relationships.data.init_database.entities.type_co
     exportSchema = false
 )
 @TypeConverters(
-    ConverterDiameter::class,
-    ConverterHeight::class,
-    ConverterMass::class,
-    ConverterFirstStage::class,
-    ConverterPayloadWeight::class,
-    ConverterPayloadWeightManyToMany::class,
     ConverterThrustSeaLevel::class,
     ConverterThrustVacuum::class,
     ConvertersDate::class,

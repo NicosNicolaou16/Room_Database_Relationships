@@ -3,94 +3,12 @@ package com.nicos.room_database_relationships.data.init_database.entities.type_c
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.nicos.room_database_relationships.data.init_database.entities.rockets.DiameterEntity
-import com.nicos.room_database_relationships.data.init_database.entities.rockets.FirstStageEntity
-import com.nicos.room_database_relationships.data.init_database.entities.rockets.HeightEntity
-import com.nicos.room_database_relationships.data.init_database.entities.rockets.MassEntity
-import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsEntity
-import com.nicos.room_database_relationships.data.init_database.entities.rockets.PayloadWeightsManyToManyEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustSeaLevelEntity
 import com.nicos.room_database_relationships.data.init_database.entities.rockets.ThrustVacuumEntity
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
-class ConverterHeight {
-
-    @TypeConverter
-    fun fromStringToHeight(value: String): HeightEntity? {
-        return Gson().fromJson(value, object : TypeToken<HeightEntity>() {}.type)
-    }
-
-    @TypeConverter
-    fun fromHeightsToString(heightEntity: HeightEntity): String = Gson().toJson(heightEntity)
-}
-
-class ConverterDiameter {
-
-    @TypeConverter
-    fun fromStringToDiameter(value: String): DiameterEntity? {
-        return Gson().fromJson(value, object : TypeToken<DiameterEntity>() {}.type)
-    }
-
-    @TypeConverter
-    fun fromDiameterToString(diameterEntity: DiameterEntity?): String =
-        Gson().toJson(diameterEntity)
-}
-
-class ConverterMass {
-
-    @TypeConverter
-    fun fromStringToMass(value: String): MassEntity? {
-        return Gson().fromJson(value, object : TypeToken<MassEntity>() {}.type)
-    }
-
-    @TypeConverter
-    fun fromMassToString(massEntity: MassEntity?): String = Gson().toJson(massEntity)
-}
-
-class ConverterPayloadWeight {
-
-    @TypeConverter
-    fun fromStringToPayloadWeightList(value: String): MutableList<PayloadWeightsEntity>? {
-        return Gson().fromJson(
-            value,
-            object : TypeToken<MutableList<PayloadWeightsEntity>>() {}.type
-        )
-    }
-
-    @TypeConverter
-    fun fromPayloadWeightListToString(payloadWeightsEntityList: MutableList<PayloadWeightsEntity>?): String =
-        Gson().toJson(payloadWeightsEntityList)
-}
-
-class ConverterPayloadWeightManyToMany {
-
-    @TypeConverter
-    fun fromStringToPayloadWeightList(value: String): MutableList<PayloadWeightsManyToManyEntity>? {
-        return Gson().fromJson(
-            value,
-            object : TypeToken<MutableList<PayloadWeightsManyToManyEntity>>() {}.type
-        )
-    }
-
-    @TypeConverter
-    fun fromPayloadWeightListToString(payloadWeightsManyToManyEntityList: MutableList<PayloadWeightsManyToManyEntity>?): String =
-        Gson().toJson(payloadWeightsManyToManyEntityList)
-}
-
-class ConverterFirstStage {
-
-    @TypeConverter
-    fun fromStringToFirstStateModel(value: String): FirstStageEntity? {
-        return Gson().fromJson(value, object : TypeToken<FirstStageEntity>() {}.type)
-    }
-
-    @TypeConverter
-    fun fromFirstStateModelToString(firstStageEntity: FirstStageEntity?): String =
-        Gson().toJson(firstStageEntity)
-}
 
 class ConverterThrustSeaLevel {
 
